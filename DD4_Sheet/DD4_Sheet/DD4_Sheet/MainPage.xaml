@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DD4_Sheet"
+             x:Class="DD4_Sheet.MainPage">
+
+    <StackLayout>
+        <Frame>
+            <Grid>
+                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Label Text="Nom : "/>
+                    <Entry Placeholder="Nom du personnage"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                    <Label Text="Lvl : "/>
+                    <Label x:Name="lb_lvl_val"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                    <Label Text="XP : "/>
+                    <Label x:Name="lb_xp_val"/>
+                </StackLayout>
+                <ImageButton Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
+                             />
+            </Grid>
+        </Frame>
+        <Button Text="Combat"
+               HorizontalOptions="Center"/>
+        <Frame>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Text="carc and def" Grid.Row="0" Grid.Column="0"/>
+                <Button Text="monnais" Grid.Row="1" Grid.Column="0"/>
+                <Button Text="comp" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"/>
+            </Grid>
+        </Frame>
+
+        <Frame>
+            <Grid>
+
+                <Button Text="carc secondaire" Grid.Row="0" Grid.Column="0"/>
+                <Button Text="Sort" Grid.Row="1" Grid.Column="0"/>
+                <Button Text="Equipement" Grid.Row="0" Grid.Column="1"/>
+                <Button Text="Talent" Grid.Row="1" Grid.Column="1"/>
+            </Grid>
+        </Frame>
+
+
+    </StackLayout>
+
+</ContentPage>
