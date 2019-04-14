@@ -28,7 +28,9 @@ namespace DD4_Sheet
 
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
-            App.MAIN.save();
+            Debug.WriteLine(App.MAIN.ToXML());
+
+            Application.Current.Properties[App.XMLkey] = App.MAIN.ToXML();
         }
     }
 }

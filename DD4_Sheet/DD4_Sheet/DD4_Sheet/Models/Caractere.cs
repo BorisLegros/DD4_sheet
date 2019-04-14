@@ -94,7 +94,7 @@ namespace DD4_Sheet.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
+        /*
         public void save ()
         {
             IFormatter formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
@@ -105,6 +105,25 @@ namespace DD4_Sheet.Models
 
             formatter.Serialize(stream, this);
             stream.Close();
+        }
+        */
+        public string ToXML ()
+        {
+            using (var writer = new StringWriter())
+            {
+                var serializer = new System.Xml.Serialization.XmlSerializer(this.GetType());
+                serializer.Serialize(writer, this);
+                return writer.ToString();
+            }
+        }
+
+        public static Caractere LoadFromXML (string xml)
+        {
+            using (var reader = new StringReader(xml))
+            {
+                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Caractere));
+                return serializer.Deserialize(reader) as Caractere;
+            }
         }
     }
 }
