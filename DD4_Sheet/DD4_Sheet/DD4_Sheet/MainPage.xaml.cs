@@ -1,7 +1,8 @@
-﻿using DD4_Sheet.Models;
+﻿using DD4_Sheet;
 using DD4_Sheet.View;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,11 @@ namespace DD4_Sheet
 {
     public partial class MainPage : ContentPage
     {
-        public string toto { get; set; } = "toto";
+
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = App.MAIN;
         }
 
         void FrameDescription_tapped(object sender, EventArgs e)
@@ -26,7 +28,7 @@ namespace DD4_Sheet
 
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
-            Application.Current.Properties["name"] = App.MAIN.Name;
+            App.MAIN.save();
         }
     }
 }

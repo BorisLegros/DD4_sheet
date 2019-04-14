@@ -1,13 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DD4_Sheet"
              x:Class="DD4_Sheet.View.CaracterePage">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Nom : " FontSize="10"/>
-                    <Entry Placeholder="Nom du personnage" FontSize="10" Unfocused="Name_Unfocused"/>
+                    <Entry Placeholder="Nom du personnage" 
+                           Text="{Binding Name}" FontSize="10" Unfocused="Name_Unfocused"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Nom : " FontSize="10"/>
+                    <Label
+                           Text="{Binding Name}" FontSize="10"/>
                 </StackLayout>
                 <Grid>
                     <Grid.RowDefinitions>

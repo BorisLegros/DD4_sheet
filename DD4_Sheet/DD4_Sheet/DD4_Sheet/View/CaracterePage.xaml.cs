@@ -16,6 +16,7 @@ namespace DD4_Sheet.View
 		public CaracterePage ()
 		{
 			InitializeComponent ();
+            BindingContext = App.MAIN;
 		}
 
         private void Name_Unfocused(object sender, FocusEventArgs e)

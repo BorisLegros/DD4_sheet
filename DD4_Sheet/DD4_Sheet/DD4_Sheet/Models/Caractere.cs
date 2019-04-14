@@ -1,12 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace DD4_Sheet.Models
 {
-    public class Caractere
+    [Serializable]
+    public class Caractere : INotifyPropertyChanged
     {
-        public String Name { get; set; }
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                if (_name != value)
+                {
+                    Debug.WriteLine(this._name + " : " + value);
+                    _name = value;
+                    OnPropertyChanged("Name");
+                }
+            }
+        }
         public int Xp { get; set; }
         public int Lvl
         {
@@ -30,7 +50,10 @@ namespace DD4_Sheet.Models
         public String EpicDestinyBG { get; set; }
 
 
+        private string _name, _classe, _race, _parangonP, _epicD, _langages, _description, _background, _parangonBG, _epicBG;
         private int[] tabLvl;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public Caractere ()
         {
@@ -67,10 +90,21 @@ namespace DD4_Sheet.Models
             tabLvl[29] = 1000000;
         }
 
-        public void save()
+        public virtual void OnPropertyChanged(string propertyName)
         {
-            var x = new System.Xml.Serialization.XmlSerializer(this.GetType());
-            x.Serialize(Console.Out, this);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void save ()
+        {
+            IFormatter formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            string docPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData);
+            Stream stream = new FileStream(docPath, FileMode.Create, FileAccess.Write);
+
+            Debug.WriteLine(docPath);
+
+            formatter.Serialize(stream, this);
+            stream.Close();
         }
     }
 }

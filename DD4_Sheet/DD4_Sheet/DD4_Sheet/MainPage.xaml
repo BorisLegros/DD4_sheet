@@ -17,11 +17,10 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                
+
                 <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                     <Label Text="Nom : " FontSize="10"/>
-                    <Label x:Name="lb_nom_val" FontSize="10"
-                           Text="{Binding MainPage.toto}"/>
+                    <Label Text="{Binding Name, Mode=TwoWay}" FontSize="10"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
                     <Label Text="Lvl : " FontSize="10"/>

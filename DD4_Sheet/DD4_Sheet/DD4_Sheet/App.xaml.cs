@@ -10,10 +10,14 @@ namespace DD4_Sheet
     {
 
         public static Caractere MAIN;
+        public string toto { get; set; }
 
         public App()
         {
             MAIN = new Caractere();
+
+            this.toto = "TOTO";
+
             InitializeComponent();
 
             MainPage = new NavigationPage (new MainPage());
