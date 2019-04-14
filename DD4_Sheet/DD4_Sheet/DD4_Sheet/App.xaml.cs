@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DD4_Sheet.Models;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,11 +8,15 @@ namespace DD4_Sheet
 {
     public partial class App : Application
     {
+
+        public static Caractere MAIN;
+
         public App()
         {
+            MAIN = new Caractere();
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage (new MainPage());
         }
 
         protected override void OnStart()

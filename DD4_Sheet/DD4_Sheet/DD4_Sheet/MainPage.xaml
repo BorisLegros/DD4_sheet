@@ -5,44 +5,59 @@
              x:Class="DD4_Sheet.MainPage">
 
     <StackLayout>
-        <Frame>
+        <Frame
+            Padding="5,5,2,5">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="FrameDescription_tapped"/>
+            </Frame.GestureRecognizers>
             <Grid>
-                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                    <Label Text="Nom : "/>
-                    <Entry Placeholder="Nom du personnage"/>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
-                    <Label Text="Lvl : "/>
-                    <Label x:Name="lb_lvl_val"/>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-                    <Label Text="XP : "/>
-                    <Label x:Name="lb_xp_val"/>
-                </StackLayout>
-                <ImageButton Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
-                             />
-            </Grid>
-        </Frame>
-        <Button Text="Combat"
-               HorizontalOptions="Center"/>
-        <Frame>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-
-                <Button Text="carc and def" Grid.Row="0" Grid.Column="0"/>
-                <Button Text="monnais" Grid.Row="1" Grid.Column="0"/>
-                <Button Text="comp" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"/>
+                
+                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Label Text="Nom : " FontSize="10"/>
+                    <Label x:Name="lb_nom_val" FontSize="10"
+                           Text="{Binding MainPage.toto}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                    <Label Text="Lvl : " FontSize="10"/>
+                    <Label x:Name="lb_lvl_val" FontSize="10"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                    <Label Text="XP : " FontSize="10"/>
+                    <Label x:Name="lb_xp_val" FontSize="10"/>
+                    <Button Text="+" HeightRequest="50" WidthRequest="50"/>
+                </StackLayout>
+                <ImageButton Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
+                             Clicked="ImageButton_Clicked"/>
             </Grid>
         </Frame>
+        
+        <Button Text="Combat"
+               HorizontalOptions="Center"/>
 
-        <Frame>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Text="carc and def" Grid.Row="0" Grid.Column="0"/>
+            <Button Text="monnais" Grid.Row="1" Grid.Column="0"/>
+            <Button Text="comp" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"/>
+        </Grid>
+
+        <Frame
+            Padding="5,5,2,5"
+            Margin="1">
             <Grid>
 
                 <Button Text="carc secondaire" Grid.Row="0" Grid.Column="0"/>
