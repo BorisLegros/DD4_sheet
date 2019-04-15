@@ -19,10 +19,10 @@ namespace DD4_Sheet.View
             BindingContext = App.MAIN;
 		}
 
-        private void Name_Unfocused(object sender, FocusEventArgs e)
+        protected override void OnDisappearing()
         {
-            App.MAIN.Name = (sender as Entry).Text;
-            Debug.WriteLine(App.MAIN.Name);
+            App.save();
+            base.OnDisappearing();
         }
     }
 }

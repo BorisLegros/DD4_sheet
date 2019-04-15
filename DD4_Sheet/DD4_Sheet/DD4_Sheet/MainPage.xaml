@@ -14,7 +14,7 @@
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
@@ -24,14 +24,14 @@
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
                     <Label Text="Lvl : " FontSize="10"/>
-                    <Label x:Name="lb_lvl_val" FontSize="10"/>
+                    <Label Text="{Binding Lvl}" FontSize="10"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
                     <Label Text="XP : " FontSize="10"/>
-                    <Label x:Name="lb_xp_val" FontSize="10"/>
-                    <Button Text="+" HeightRequest="50" WidthRequest="50"/>
+                    <Label Text="{Binding Xp}"  FontSize="10"/>
+                    <Button Text="+" HeightRequest="40" WidthRequest="40" Clicked="btn_xp_Clicked"/>
                 </StackLayout>
-                <ImageButton Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
+                <ImageButton x:Name="imgProfil" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
                              Clicked="ImageButton_Clicked"/>
             </Grid>
         </Frame>

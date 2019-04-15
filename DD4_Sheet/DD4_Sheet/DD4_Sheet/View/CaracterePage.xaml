@@ -9,11 +9,6 @@
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Nom : " FontSize="10"/>
                     <Entry Placeholder="Nom du personnage" 
-                           Text="{Binding Name}" FontSize="10" Unfocused="Name_Unfocused"/>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Nom : " FontSize="10"/>
-                    <Label
                            Text="{Binding Name}" FontSize="10"/>
                 </StackLayout>
                 <Grid>
@@ -21,38 +16,38 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Label Text="Classe : " FontSize="10" Grid.Row="0" Grid.Column="0"/>
-                    <Entry Placeholder="Classe" FontSize="10" Grid.Row="1" Grid.Column="0"/>
+                    <Entry Placeholder="Classe" Text="{Binding Classe, Mode=TwoWay}" FontSize="10" Grid.Row="1" Grid.Column="0"/>
                     <Label Text="Voie Parangonique : " FontSize="10" Grid.Row="0" Grid.Column="1"/>
-                    <Entry Placeholder="Parangon" FontSize="10" Grid.Row="1" Grid.Column="1"/>
+                    <Entry Placeholder="Parangon" Text="{Binding ParangonPath, Mode=TwoWay}" FontSize="10" Grid.Row="1" Grid.Column="1"/>
                     <Label Text="Destinée Epique : " FontSize="10" Grid.Row="0" Grid.Column="2"/>
-                    <Entry Placeholder="Epique" FontSize="10" Grid.Row="1" Grid.Column="2"/>
+                    <Entry Placeholder="Epique" Text="{Binding EpicDestiny, Mode=TwoWay}" FontSize="10" Grid.Row="1" Grid.Column="2"/>
                 </Grid>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Label Text="Race : " FontSize="10" Grid.Row="0" Grid.Column="0"/>
-                    <Entry Placeholder="Race" FontSize="10" Grid.Row="1" Grid.Column="0"/>
+                    <Entry Placeholder="Race" Text="{Binding Race, Mode=TwoWay}" FontSize="10" Grid.Row="1" Grid.Column="0"/>
                     <Label Text="Langues : " FontSize="10" Grid.Row="0" Grid.Column="1"/>
-                    <Entry Placeholder="Langues parlées" FontSize="10" Grid.Row="1" Grid.Column="1"/>
+                    <Entry Placeholder="Langues parlées" Text="{Binding Languages, Mode=TwoWay}" FontSize="10" Grid.Row="1" Grid.Column="1"/>
                 </Grid>
 
                 <StackLayout>
                     <Label Text="Description : " FontSize="10"/>
-                    <Editor Placeholder="Physique et caractère" FontSize="10"/>
+                    <Editor Placeholder="Physique et caractère" Text="{Binding Description, Mode=TwoWay}" FontSize="10"/>
                 </StackLayout>
 
                 <StackLayout >
                     <Label Text="Origine : " FontSize="10"/>
-                    <Editor Placeholder="Origin Story" FontSize="10"/>
+                    <Editor Placeholder="Origin Story" Text="{Binding Background, Mode=TwoWay}" FontSize="10"/>
                 </StackLayout>
                 <StackLayout >
                     <Label Text="Parangon : " FontSize="10"/>
-                    <Editor Placeholder="Parangon Story" FontSize="10"/>
+                    <Editor Placeholder="Parangon Story" Text="{Binding ParangonBG, Mode=TwoWay}" FontSize="10"/>
                 </StackLayout>
                 <StackLayout >
                     <Label Text="Destinée Epique : " FontSize="10"/>
-                    <Editor Placeholder="Epic Story" FontSize="10"/>
+                    <Editor Placeholder="Epic Story" Text="{Binding EpicDetinyBG, Mode=TwoWay}" FontSize="10"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

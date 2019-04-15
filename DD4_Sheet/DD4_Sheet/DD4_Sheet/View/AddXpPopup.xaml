@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="DD4_Sheet.View.AddXpPopup">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="0.8"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    
+    <StackLayout 
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" 
+        Padding="20, 20, 20, 20"
+        BackgroundColor="WhiteSmoke">
+        <Label Text="XP supplemantaire : "/>
+        <Entry x:Name="entry_xpPlus" Placeholder="xp + ..." Keyboard="Numeric"/>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Annuler" Clicked="Cancel_Clicked"/>
+            <Button Text="Ok" Clicked="Ok_Clicked"/>
+        </StackLayout>
+    </StackLayout>
+</pages:PopupPage>

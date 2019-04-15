@@ -1,5 +1,6 @@
 ﻿using DD4_Sheet;
 using DD4_Sheet.View;
+using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,20 +18,22 @@ namespace DD4_Sheet
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = App.MAIN;
+            BindingContext = App.MAIN;  
         }
 
         void FrameDescription_tapped(object sender, EventArgs e)
         {
             Debug.WriteLine("click !");
-            Navigation.PushAsync(new CaracterePage ()); 
+            Navigation.PushAsync(new CaracterePage());
         }
 
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
-            Debug.WriteLine(App.MAIN.ToXML());
+        }
 
-            Application.Current.Properties[App.XMLkey] = App.MAIN.ToXML();
+        private void btn_xp_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushPopupAsync(new AddXpPopup());
         }
     }
 }

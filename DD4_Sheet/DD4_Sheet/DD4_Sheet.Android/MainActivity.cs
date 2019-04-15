@@ -14,6 +14,10 @@ namespace DD4_Sheet.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            // ADD // 
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+
+            // BASE //
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

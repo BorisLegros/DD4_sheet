@@ -10,7 +10,6 @@ namespace DD4_Sheet
     {
 
         public static Caractere MAIN;
-        public string toto { get; set; }
 
         public static string XMLkey = "XmlSave";
 
@@ -24,9 +23,8 @@ namespace DD4_Sheet
             {
                 MAIN = new Caractere();
             }
-            
 
-            this.toto = "TOTO";
+            //MAIN = new Caractere();
 
             InitializeComponent();
             
@@ -40,12 +38,17 @@ namespace DD4_Sheet
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            save();
         }
 
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        public static void save ()
+        {
+            Current.Properties[XMLkey] = MAIN.ToXML();
         }
     }
 }

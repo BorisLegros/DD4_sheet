@@ -21,7 +21,10 @@ namespace DD4_Sheet.iOS
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
-        {
+        {   // ADD //
+            Rg.Plugins.Popup.Popup.Init();
+
+            // BASE //
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

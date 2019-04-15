@@ -8,7 +8,6 @@ using System.Text;
 
 namespace DD4_Sheet.Models
 {
-    [Serializable]
     public class Caractere : INotifyPropertyChanged
     {
         public string Name
@@ -21,92 +20,242 @@ namespace DD4_Sheet.Models
             {
                 if (_name != value)
                 {
-                    Debug.WriteLine(this._name + " : " + value);
                     _name = value;
                     OnPropertyChanged("Name");
                 }
             }
         }
-        public int Xp { get; set; }
+
+        public string Classe
+        {
+            get
+            {
+                return _classe;
+            }
+            set
+            {
+                if (_classe != value)
+                {
+                    _classe = value;
+                    OnPropertyChanged("Classe");
+                }
+            }
+        }
+
+        public string Race
+        {
+            get
+            {
+                return _race;
+            }
+            set
+            {
+                if (_race != value)
+                {
+                    _race = value;
+                    OnPropertyChanged("Race");
+                }
+            }
+        }
+
+        public string ParangonPath
+        {
+            get
+            {
+                return _paranP;
+            }
+            set
+            {
+                if (_paranP != value)
+                {
+                    _paranP = value;
+                    OnPropertyChanged("ParangonPath");
+                }
+            }
+        }
+
+        public string EpicDestiny
+        {
+            get
+            {
+                return _epicD;
+            }
+            set
+            {
+                if (_epicD != value)
+                {
+                    _epicD = value;
+                    OnPropertyChanged("EpicDestiny");
+                }
+            }
+        }
+
+        public string Languages
+        {
+            get
+            {
+                return _lang;
+            }
+            set
+            {
+                if (_lang != value)
+                {
+                    _lang = value;
+                    OnPropertyChanged("Languages");
+                }
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return _descr;
+            }
+            set
+            {
+                if (_descr != value)
+                {
+                    _descr = value;
+                    OnPropertyChanged("Description");
+                }
+            }
+        }
+
+        public string Background
+        {
+            get
+            {
+                return _bg;
+            }
+            set
+            {
+                if (_bg != value)
+                {
+                    _bg = value;
+                    OnPropertyChanged("Background");
+                }
+            }
+        }
+
+        public string ParangonBG
+        {
+            get
+            {
+                return _paranBG;
+            }
+            set
+            {
+                if (_paranBG != value)
+                {
+                    _paranBG = value;
+                    OnPropertyChanged("ParangonBG");
+                }
+            }
+        }
+
+        public string EpicDestinyBG
+        {
+            get
+            {
+                return _epicBG;
+            }
+            set
+            {
+                if (_epicBG != value)
+                {
+                    _epicBG = value;
+                    OnPropertyChanged("EpicDestinyBG");
+                }
+            }
+        }
+
+
+        public int Xp
+        {
+            get
+            {
+                return _xp;
+            }
+            set
+            {
+                if (_xp != value)
+                {
+                    _xp = value;
+                    OnPropertyChanged("Xp");
+                    OnPropertyChanged("Lvl");
+                }
+            }
+        }
+
         public int Lvl
         {
             get
             {
                 int rtn = 0;
 
-                while (tabLvl[rtn] < Xp) { rtn++; }
+                foreach (int val in tabLvl)
+                {
+                    if (_xp < val) { break; }
+
+                    rtn++;
+                }
 
                 return rtn;
             }
         }
-        public String Class { get; set; }
-        public String Race { get; set; }
-        public String ParagonPath { get; set; }
-        public String EpicDestiny { get; set; }
-        public String Langages { get; set; }
-        public String Description { get; set; }
-        public String Background { get; set; }
-        public String ParangonBG { get; set; }
-        public String EpicDestinyBG { get; set; }
 
 
-        private string _name, _classe, _race, _parangonP, _epicD, _langages, _description, _background, _parangonBG, _epicBG;
-        private int[] tabLvl;
+        private string _name, _classe, _race, _paranP, _epicD, _lang, _descr, _bg, _paranBG, _epicBG;
+        private int _xp;
+       // private int[] tabLvl;
+        private List<int> tabLvl;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Caractere ()
         {
-            tabLvl = new int[30];
-            tabLvl[0] = 0;
-            tabLvl[1] = 1000;
-            tabLvl[2] = 2250;
-            tabLvl[3] = 3750;
-            tabLvl[4] = 5500;
-            tabLvl[5] = 7500;
-            tabLvl[6] = 10000;
-            tabLvl[7] = 13000;
-            tabLvl[8] = 16500;
-            tabLvl[9] = 20500;
-            tabLvl[10] = 26000;
-            tabLvl[11] = 32000;
-            tabLvl[12] = 39000;
-            tabLvl[13] = 47000;
-            tabLvl[14] = 57000;
-            tabLvl[15] = 69000;
-            tabLvl[16] = 83000;
-            tabLvl[17] = 99000;
-            tabLvl[18] = 119000;
-            tabLvl[19] = 143000;
-            tabLvl[20] = 175000;
-            tabLvl[21] = 210000;
-            tabLvl[22] = 255000;
-            tabLvl[23] = 310000;
-            tabLvl[24] = 375000;
-            tabLvl[25] = 450000;
-            tabLvl[26] = 550000;
-            tabLvl[27] = 675000;
-            tabLvl[28] = 825000;
-            tabLvl[29] = 1000000;
+            Xp = 0;
+
+            tabLvl = new List<int>(30);
+           
+            tabLvl.Add(0);
+            tabLvl.Add(1000);
+            tabLvl.Add(2250);
+            tabLvl.Add(3750);
+            tabLvl.Add(5500);
+            tabLvl.Add(7500);
+            tabLvl.Add(10000);
+            tabLvl.Add(13000);
+            tabLvl.Add(16500);
+            tabLvl.Add(20500);
+            tabLvl.Add(26000);
+            tabLvl.Add(32000);
+            tabLvl.Add(39000);
+            tabLvl.Add(47000);
+            tabLvl.Add(57000);
+            tabLvl.Add(69000);
+            tabLvl.Add(83000);
+            tabLvl.Add(99000);
+            tabLvl.Add(119000);
+            tabLvl.Add(143000);
+            tabLvl.Add(175000);
+            tabLvl.Add(210000);
+            tabLvl.Add(255000);
+            tabLvl.Add(310000);
+            tabLvl.Add(375000);
+            tabLvl.Add(450000);
+            tabLvl.Add(550000);
+            tabLvl.Add(675000);
+            tabLvl.Add(825000);
+            tabLvl.Add(1000000);
         }
 
         public virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        /*
-        public void save ()
-        {
-            IFormatter formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-            string docPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData);
-            Stream stream = new FileStream(docPath, FileMode.Create, FileAccess.Write);
 
-            Debug.WriteLine(docPath);
-
-            formatter.Serialize(stream, this);
-            stream.Close();
-        }
-        */
         public string ToXML ()
         {
             using (var writer = new StringWriter())
@@ -125,5 +274,19 @@ namespace DD4_Sheet.Models
                 return serializer.Deserialize(reader) as Caractere;
             }
         }
+
+        /*
+        public void save ()
+        {
+            IFormatter formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            string docPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData);
+            Stream stream = new FileStream(docPath, FileMode.Create, FileAccess.Write);
+
+            Debug.WriteLine(docPath);
+
+            formatter.Serialize(stream, this);
+            stream.Close();
+        }
+        */
     }
 }
