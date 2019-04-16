@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-             x:Class="DD4_Sheet.View.AddXpPopup">
-    
+             x:Class="DD4_Sheet.View.FeaturePopup">
+
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
             PositionIn="Center"
@@ -17,17 +17,24 @@
             EasingOut="SinIn"
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
-    
-    <StackLayout 
+
+    <StackLayout
         VerticalOptions="Center" 
-        HorizontalOptions="Center" 
+        HorizontalOptions="CenterAndExpand" 
         Padding="20, 20, 20, 20"
         BackgroundColor="WhiteSmoke">
-        <Label Text="XP supplemantaire : "/>
-        <Entry x:Name="entry_xpPlus" Placeholder="xp + ..." Keyboard="Numeric"/>
+        <Label Text="{Binding Name}" />
         <StackLayout Orientation="Horizontal">
-            <Button Text="Annuler" Clicked="Cancel_Clicked"/>
-            <Button Text="Ok" Clicked="Ok_Clicked"/>
+            <Label Text="Base : " FontSize="10"/>
+            <Entry Text="{Binding BaseValue}" Keyboard="Numeric" WidthRequest="50"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Race : " FontSize="10"/>
+            <Entry Text="{Binding BonusRace}" Keyboard="Numeric" WidthRequest="50"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Modificateurs : " FontSize="10"/>
+            <StackLayout x:Name="sl_amends_perso"/>
         </StackLayout>
     </StackLayout>
 </pages:PopupPage>

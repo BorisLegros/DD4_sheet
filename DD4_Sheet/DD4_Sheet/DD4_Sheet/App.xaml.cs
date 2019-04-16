@@ -15,16 +15,20 @@ namespace DD4_Sheet
 
         public App()
         {
+
+            //if (Current.Properties.ContainsKey(XMLkey)) { Current.Properties.Remove(XMLkey); }
+ 
             if (Application.Current.Properties.ContainsKey(App.XMLkey))
             {
                 MAIN = Caractere.LoadFromXML(Current.Properties[App.XMLkey] as string);
+                //MAIN = Current.Properties[App.XMLkey] as Caractere;
             }
             else
             {
                 MAIN = new Caractere();
             }
 
-            //MAIN = new Caractere();
+            
 
             InitializeComponent();
             

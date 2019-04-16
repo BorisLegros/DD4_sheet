@@ -37,7 +37,8 @@
         </Frame>
         
         <Button Text="Combat"
-               HorizontalOptions="Center"/>
+               HorizontalOptions="Center"
+               BackgroundColor="Red"/>
 
         <Grid>
             <Grid.RowDefinitions>
@@ -49,9 +50,10 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Text="carc and def" Grid.Row="0" Grid.Column="0"/>
-            <Button Text="monnais" Grid.Row="1" Grid.Column="0"/>
-            <Button Text="comp" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"/>
+            <Button Text="Carc et Comp" Grid.Row="0" Grid.Column="0" Clicked="Carac_clicked"/>
+            <Button Text="Inventaire" Grid.Row="1" Grid.Column="0"/>
+            <Button Text="Atk et Def" Grid.Row="0" Grid.Column="1"/>
+            <Button Text="Equipement" Grid.Row="1" Grid.Column="1"/>
         </Grid>
 
         <Frame
@@ -59,10 +61,10 @@
             Margin="1">
             <Grid>
 
-                <Button Text="carc secondaire" Grid.Row="0" Grid.Column="0"/>
-                <Button Text="Sort" Grid.Row="1" Grid.Column="0"/>
-                <Button Text="Equipement" Grid.Row="0" Grid.Column="1"/>
-                <Button Text="Talent" Grid.Row="1" Grid.Column="1"/>
+                <Button Text="Sort" Grid.Row="0" Grid.Column="0"/>
+                <Button Text="Talent" Grid.Row="1" Grid.Column="0"/>
+                <Button Text="Rituel" Grid.Row="0" Grid.Column="1"/>
+                <Button Text="Note" Grid.Row="1" Grid.Column="1"/>
             </Grid>
         </Frame>
 

@@ -170,7 +170,6 @@ namespace DD4_Sheet.Models
             }
         }
 
-
         public int Xp
         {
             get
@@ -194,7 +193,7 @@ namespace DD4_Sheet.Models
             {
                 int rtn = 0;
 
-                foreach (int val in tabLvl)
+                foreach (int val in _tabLvl)
                 {
                     if (_xp < val) { break; }
 
@@ -205,11 +204,25 @@ namespace DD4_Sheet.Models
             }
         }
 
+        public Dictionary<string, Feature> Features { get; set; }
 
+
+
+        public Feature Strenght { get { return _for; } set { _for = value; } }
+          /*public Feature Constitution { get { return _con; } set { _con = value; } }
+         public Feature Dexterity { get { return _dex; } set { _dex = value; } }
+         public Feature Intelligence { get { return _int; } set { _int = value; } }
+         public Feature Wisdom { get { return _sag; } set { _sag = value; } }
+         public Feature Charisma { get { return _cha; } set { _cha = value; } }
+
+         private Feature _for, _con, _dex, _int, _sag, _cha;
+         */
+
+        private Feature _for;
         private string _name, _classe, _race, _paranP, _epicD, _lang, _descr, _bg, _paranBG, _epicBG;
         private int _xp;
-       // private int[] tabLvl;
-        private List<int> tabLvl;
+        private List<int> _tabLvl;
+        //private Dictionary<string, Feature> _features;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -217,38 +230,54 @@ namespace DD4_Sheet.Models
         {
             Xp = 0;
 
-            tabLvl = new List<int>(30);
-           
-            tabLvl.Add(0);
-            tabLvl.Add(1000);
-            tabLvl.Add(2250);
-            tabLvl.Add(3750);
-            tabLvl.Add(5500);
-            tabLvl.Add(7500);
-            tabLvl.Add(10000);
-            tabLvl.Add(13000);
-            tabLvl.Add(16500);
-            tabLvl.Add(20500);
-            tabLvl.Add(26000);
-            tabLvl.Add(32000);
-            tabLvl.Add(39000);
-            tabLvl.Add(47000);
-            tabLvl.Add(57000);
-            tabLvl.Add(69000);
-            tabLvl.Add(83000);
-            tabLvl.Add(99000);
-            tabLvl.Add(119000);
-            tabLvl.Add(143000);
-            tabLvl.Add(175000);
-            tabLvl.Add(210000);
-            tabLvl.Add(255000);
-            tabLvl.Add(310000);
-            tabLvl.Add(375000);
-            tabLvl.Add(450000);
-            tabLvl.Add(550000);
-            tabLvl.Add(675000);
-            tabLvl.Add(825000);
-            tabLvl.Add(1000000);
+            _tabLvl = new List<int>(30);
+            _tabLvl.Add(0);
+            _tabLvl.Add(1000);
+            _tabLvl.Add(2250);
+            _tabLvl.Add(3750);
+            _tabLvl.Add(5500);
+            _tabLvl.Add(7500);
+            _tabLvl.Add(10000);
+            _tabLvl.Add(13000);
+            _tabLvl.Add(16500);
+            _tabLvl.Add(20500);
+            _tabLvl.Add(26000);
+            _tabLvl.Add(32000);
+            _tabLvl.Add(39000);
+            _tabLvl.Add(47000);
+            _tabLvl.Add(57000);
+            _tabLvl.Add(69000);
+            _tabLvl.Add(83000);
+            _tabLvl.Add(99000);
+            _tabLvl.Add(119000);
+            _tabLvl.Add(143000);
+            _tabLvl.Add(175000);
+            _tabLvl.Add(210000);
+            _tabLvl.Add(255000);
+            _tabLvl.Add(310000);
+            _tabLvl.Add(375000);
+            _tabLvl.Add(450000);
+            _tabLvl.Add(550000);
+            _tabLvl.Add(675000);
+            _tabLvl.Add(825000);
+            _tabLvl.Add(1000000);
+
+            Features = new Dictionary<string, Feature>(6);
+            Features.Add("for", new Feature("Force"));
+            Features.Add("con", new Feature("Constitution"));
+            Features.Add("dex", new Feature("Dexterité"));
+            Features.Add("int", new Feature("Intelligence"));
+            Features.Add("sag", new Feature("Sagesse"));
+            Features.Add("cha", new Feature("Charisme"));
+
+            
+            _for = new Feature("Force");
+            /*_con = new Feature("Constitution");
+            _dex = new Feature("Dexterité");
+            _int = new Feature("Intelligence");
+            _sag = new Feature("Sagesse");
+            _cha = new Feature("Charisme");
+            */
         }
 
         public virtual void OnPropertyChanged(string propertyName)

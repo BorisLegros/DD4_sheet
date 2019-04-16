@@ -35,5 +35,10 @@ namespace DD4_Sheet
         {
             Navigation.PushPopupAsync(new AddXpPopup());
         }
+
+        private void Carac_clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FeatureAndSkillPage());
+        }
     }
 }
