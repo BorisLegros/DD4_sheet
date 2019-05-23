@@ -204,21 +204,22 @@ namespace DD4_Sheet.Models
             }
         }
 
-        public Dictionary<string, Feature> Features { get; set; }
+        public List<Feature> Features { get; set; }
+        public List<string> Featureees { get; set; }
 
 
 
-        public Feature Strenght { get { return _for; } set { _for = value; } }
-          /*public Feature Constitution { get { return _con; } set { _con = value; } }
-         public Feature Dexterity { get { return _dex; } set { _dex = value; } }
-         public Feature Intelligence { get { return _int; } set { _int = value; } }
-         public Feature Wisdom { get { return _sag; } set { _sag = value; } }
-         public Feature Charisma { get { return _cha; } set { _cha = value; } }
+        /*public Feature Strenght { get { return _for; } set { _for = value; } }
+        public Feature Constitution { get { return _con; } set { _con = value; } }
+        public Feature Dexterity { get { return _dex; } set { _dex = value; } }
+        public Feature Intelligence { get { return _int; } set { _int = value; } }
+        public Feature Wisdom { get { return _sag; } set { _sag = value; } }
+        public Feature Charisma { get { return _cha; } set { _cha = value; } }
 
-         private Feature _for, _con, _dex, _int, _sag, _cha;
-         */
+        private Feature _for, _con, _dex, _int, _sag, _cha;
+        */
 
-        private Feature _for;
+        //private Feature _for;
         private string _name, _classe, _race, _paranP, _epicD, _lang, _descr, _bg, _paranBG, _epicBG;
         private int _xp;
         private List<int> _tabLvl;
@@ -262,17 +263,37 @@ namespace DD4_Sheet.Models
             _tabLvl.Add(825000);
             _tabLvl.Add(1000000);
 
-            Features = new Dictionary<string, Feature>(6);
-            Features.Add("for", new Feature("Force"));
-            Features.Add("con", new Feature("Constitution"));
-            Features.Add("dex", new Feature("Dexterité"));
-            Features.Add("int", new Feature("Intelligence"));
-            Features.Add("sag", new Feature("Sagesse"));
-            Features.Add("cha", new Feature("Charisme"));
+            Features = new List<Feature>(6);
+            Features.Add(new Feature("Force"));
+            Features.Add(new Feature("Constitution"));
+            Features.Add(new Feature("Dexterité"));
+            Features.Add(new Feature("Intelligence"));
+            Features.Add(new Feature("Sagesse"));
+            Features.Add(new Feature("Charisme"));
 
-            
-            _for = new Feature("Force");
-            /*_con = new Feature("Constitution");
+            Featureees = new List<string>();
+            Featureees.Add("Force");
+            Featureees.Add("Constitution");
+            Featureees.Add("Dexterité");
+            Featureees.Add("Intelligence");
+            Featureees.Add("Sagesse");
+            Featureees.Add("Charisme");
+            Featureees.Add("Force");
+            Featureees.Add("Constitution");
+            Featureees.Add("Dexterité");
+            Featureees.Add("Intelligence");
+            Featureees.Add("Sagesse");
+            Featureees.Add("Charisme");
+            Featureees.Add("Force");
+            Featureees.Add("Constitution");
+            Featureees.Add("Dexterité");
+            Featureees.Add("Intelligence");
+            Featureees.Add("Sagesse");
+            Featureees.Add("Charisme");
+
+
+            /*_for = new Feature("Force");
+            _con = new Feature("Constitution");
             _dex = new Feature("Dexterité");
             _int = new Feature("Intelligence");
             _sag = new Feature("Sagesse");

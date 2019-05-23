@@ -38,7 +38,8 @@ namespace DD4_Sheet
 
         private void Carac_clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FeatureAndSkillPage());
+            //Navigation.PushAsync(new FeatureAndSkillPage());
+            Navigation.PushAsync(new Page1());
         }
     }
 }

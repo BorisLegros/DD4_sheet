@@ -1,5 +1,6 @@
 ﻿using DD4_Sheet.Models;
 using System;
+using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,15 +17,15 @@ namespace DD4_Sheet
         public App()
         {
 
-            //if (Current.Properties.ContainsKey(XMLkey)) { Current.Properties.Remove(XMLkey); }
+            if (Current.Properties.ContainsKey(XMLkey)) { Current.Properties.Remove(XMLkey); }
  
             if (Application.Current.Properties.ContainsKey(App.XMLkey))
             {
                 MAIN = Caractere.LoadFromXML(Current.Properties[App.XMLkey] as string);
-                //MAIN = Current.Properties[App.XMLkey] as Caractere;
             }
             else
             {
+                Debug.WriteLine("nokey");
                 MAIN = new Caractere();
             }
 
@@ -53,6 +54,7 @@ namespace DD4_Sheet
         public static void save ()
         {
             Current.Properties[XMLkey] = MAIN.ToXML();
+            Current.SavePropertiesAsync();
         }
     }
 }

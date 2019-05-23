@@ -17,7 +17,7 @@ namespace DD4_Sheet.View
 		public FeaturePopup (string fName)
 		{
 			InitializeComponent ();
-            BindingContext = App.MAIN.Features[fName];
+            /*BindingContext = App.MAIN.Features[fName];
 
             // modifications personels
             foreach (Amend a in App.MAIN.Features[fName].Amends)
@@ -30,7 +30,7 @@ namespace DD4_Sheet.View
 
                     this.sl_amends_perso.Children.Add(sth);
                 }
-            }
+            }*/
 		}
 	}
 }

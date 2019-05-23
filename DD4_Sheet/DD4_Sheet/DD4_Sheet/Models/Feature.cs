@@ -5,11 +5,46 @@ using System.Text;
 
 namespace DD4_Sheet.Models
 {
-    public struct Amend
+    public class Amend
     {
-        public int Value;
-        public string Reason;
-        public bool IsModifiable;
+        public int Value
+        {
+            get
+            {
+                return Value;
+            }
+            set
+            {
+                if (IsModifiable)
+                {
+                    Value = value;
+                }
+            }
+        }
+
+        public string Reason
+        {
+            get
+            {
+                return Reason;
+            }
+            set
+            {
+                if (IsModifiable)
+                {
+                    Reason = value;
+                }
+            }
+        }
+
+        public readonly bool IsModifiable = true;
+
+        public Amend (int v, string r, bool m = true)
+        {
+            Value = v;
+            Reason = r;
+            IsModifiable = m;
+        }
     }
 
 
@@ -112,7 +147,7 @@ namespace DD4_Sheet.Models
         {
             string rtn = "";
 
-            foreach(Amend a in _listAmend)
+            foreach (Amend a in _listAmend)
             {
                 string signe = (a.Value > 0) ? "+" : "";
                 rtn += signe + " : " + a.Reason + '\n';
