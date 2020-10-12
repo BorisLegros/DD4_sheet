@@ -310,18 +310,22 @@ namespace DD4_Sheet.Models
         {
             using (var writer = new StringWriter())
             {
-                var serializer = new System.Xml.Serialization.XmlSerializer(this.GetType());
-                serializer.Serialize(writer, this);
+                CaractereXML cXml = new CaractereXML(this);
+
+                var serializer = new System.Xml.Serialization.XmlSerializer(cXml.GetType());
+                serializer.Serialize(writer, cXml);
                 return writer.ToString();
             }
         }
 
-        public static Caractere LoadFromXML (string xml)
+        public static Caractere LoadXML (string xml)
         {
             using (var reader = new StringReader(xml))
             {
-                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Caractere));
-                return serializer.Deserialize(reader) as Caractere;
+                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(CaractereXML));
+                CaractereXML cXml = serializer.Deserialize(reader) as CaractereXML;
+
+                return cXml.ToCaractere();
             }
         }
 
@@ -338,5 +342,59 @@ namespace DD4_Sheet.Models
             stream.Close();
         }
         */
+    }
+
+    public class CaractereXML
+    {
+        private string _name, _classe, _race, _paranP, _epicD, _lang, _descr, _bg, _paranBG, _epicBG;
+        private int _xp;
+        private List<string> _listFeatures;
+
+        public CaractereXML (Caractere c)
+        {
+            _name = c.Name;
+            _classe = c.Classe;
+            _race = c.Race;
+            _paranP = c.ParangonPath;
+            _epicD = c.EpicDestiny;
+            _paranBG = c.ParangonBG;
+            _epicBG = c.EpicDestinyBG;
+            _lang = c.Languages;
+            _descr = c.Description;
+            _bg = c.Background;
+            _xp = c.Xp;
+
+            _listFeatures = new List<string>(c.Features.Count);
+            foreach (Feature f in c.Features)
+            {
+                _listFeatures.Add(f.ToXML());
+            }
+        }
+
+        public Caractere ToCaractere ()
+        {
+            Caractere rtn = new Caractere();
+
+            rtn.Name = _name;
+            rtn.Classe = _classe;
+            rtn.Race = _race;
+            rtn.ParangonPath = _paranP;
+            rtn.EpicDestiny = _epicD;
+            rtn.ParangonBG = _paranBG;
+            rtn.EpicDestinyBG = _epicBG;
+            rtn.Languages = _lang;
+            rtn.Description = _descr;
+            rtn.Background = _bg;
+            rtn.Xp = _xp;
+
+            rtn.Features = new List<Feature>(_listFeatures.Count);
+            foreach (string s in _listFeatures)
+            {
+                rtn.Features.Add(Feature.LoadXML(s));
+            }
+
+            return rtn;
+        }
+
     }
 }

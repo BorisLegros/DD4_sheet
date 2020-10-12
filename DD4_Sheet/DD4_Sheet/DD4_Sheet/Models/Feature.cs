@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Text;
 
 namespace DD4_Sheet.Models
@@ -44,6 +45,25 @@ namespace DD4_Sheet.Models
             Value = v;
             Reason = r;
             IsModifiable = m;
+        }
+
+        public string ToXML ()
+        {
+            using (var writer = new StringWriter())
+            {
+                var serializer = new System.Xml.Serialization.XmlSerializer(this.GetType());
+                serializer.Serialize(writer, this);
+                return writer.ToString();
+            }
+        }
+
+        public static Amend LoadXML (string xml)
+        {
+            using (var reader = new StringReader(xml))
+            {
+                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Amend));
+                return serializer.Deserialize(reader) as Amend;
+            }
         }
     }
 
@@ -151,6 +171,65 @@ namespace DD4_Sheet.Models
             {
                 string signe = (a.Value > 0) ? "+" : "";
                 rtn += signe + " : " + a.Reason + '\n';
+            }
+
+            return rtn;
+        }
+
+        public string ToXML()
+        {
+            using (var writer = new StringWriter())
+            {
+                FeatureXML fXml = new FeatureXML(this);
+
+                var serializer = new System.Xml.Serialization.XmlSerializer(fXml.GetType());
+                serializer.Serialize(writer, fXml);
+                return writer.ToString();
+            }
+        }
+
+        public static Feature LoadXML (string xml)
+        {
+            using (var reader = new StringReader(xml))
+            {
+                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(FeatureXML));
+                FeatureXML fXml = serializer.Deserialize(reader) as FeatureXML;
+
+                return fXml.ToFeature();
+            }
+        }
+    }
+
+    public class FeatureXML
+    {
+        private string _name;
+        private int _base, _race;
+        private List<string> _listAmend;
+
+        public FeatureXML (Feature f)
+        {
+            _name = f.Name;
+            _base = f.BaseValue;
+            _race = f.BonusRace;
+
+            _listAmend = new List<string>(f.Amends.Count);
+            foreach (Amend a in f.Amends)
+            {
+                _listAmend.Add(a.ToXML());
+            }
+        }
+
+        public Feature ToFeature ()
+        {
+            Feature rtn = new Feature(_name);
+
+            rtn.BaseValue = _base;
+            rtn.BonusRace = _race;
+
+            rtn.Amends = new List<Amend>();
+            foreach (string s in _listAmend)
+            {
+                rtn.Amends.Add(Amend.LoadXML(s));
             }
 
             return rtn;

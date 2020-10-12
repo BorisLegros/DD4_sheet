@@ -16,20 +16,23 @@ namespace DD4_Sheet
 
         public App()
         {
-
+            /*
             if (Current.Properties.ContainsKey(XMLkey)) { Current.Properties.Remove(XMLkey); }
  
             if (Application.Current.Properties.ContainsKey(App.XMLkey))
             {
-                MAIN = Caractere.LoadFromXML(Current.Properties[App.XMLkey] as string);
+                MAIN = Caractere.LoadXML(Current.Properties[App.XMLkey] as string);
             }
             else
             {
                 Debug.WriteLine("nokey");
                 MAIN = new Caractere();
             }
+            */
 
-            
+            MAIN = new Caractere();
+
+
 
             InitializeComponent();
             
@@ -43,7 +46,7 @@ namespace DD4_Sheet
 
         protected override void OnSleep()
         {
-            save();
+            //save();
         }
 
         protected override void OnResume()
